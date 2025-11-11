@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // 🔑 IMPORTANTE: Aquí va tu token de Slack
-const SLACK_BOT_TOKEN = 'xoxb-9492187289028-9881197737011-fTVcwqx1r8nygnvOWwJccFad';
+const SLACK_BOT_TOKEN = 'xoxb-90000000';
 
 // 📚 BASE DE CONOCIMIENTOS - Personaliza con tu información
 const respuestas = {
