@@ -184,35 +184,80 @@ Puedo ayudarte con información sobre:
 function buscarRespuesta(mensaje) {
   const msg = mensaje.toLowerCase();
   
-  if (msg.includes('horario') || msg.includes('hora') || msg.includes('abierto')) {
-    return respuestas.horarios;
+  // Academia de Libertad / Qué es
+  if (msg.includes('academia') || msg.includes('que es') || msg.includes('qué es') || 
+      msg.includes('pilares') || msg.includes('iniciativas')) {
+    return respuestas.academia;
   }
   
-  if (msg.includes('pago') || msg.includes('costo') || msg.includes('precio') || 
-      msg.includes('cuanto') || msg.includes('mensualidad')) {
-    return respuestas.pagos;
+  // Curso de Libertad
+  if (msg.includes('curso') || msg.includes('principios') || msg.includes('contenido') ||
+      msg.includes('temas') || msg.includes('curriculum')) {
+    return respuestas.curso;
   }
   
-  if (msg.includes('inscri') || msg.includes('matricul') || msg.includes('como me inscribo')) {
+  // Certificado
+  if (msg.includes('certificado') || msg.includes('certificacion') || msg.includes('cornell') ||
+      msg.includes('titulo')) {
+    return respuestas.certificado;
+  }
+  
+  // Inscripción
+  if (msg.includes('inscri') || msg.includes('registro') || msg.includes('como me registro') ||
+      msg.includes('aplicar') || msg.includes('unirme')) {
     return respuestas.inscripcion;
   }
   
-  if (msg.includes('curso') || msg.includes('programa') || msg.includes('clases')) {
-    return respuestas.cursos;
+  // Beneficios
+  if (msg.includes('beneficio') || msg.includes('beca') || msg.includes('microgrant') ||
+      msg.includes('oportunidad') || msg.includes('embajador')) {
+    return respuestas.beneficios;
   }
   
-  if (msg.includes('contacto') || msg.includes('telefono') || msg.includes('email') || 
-      msg.includes('direccion') || msg.includes('ubicacion')) {
+  // Duración
+  if (msg.includes('duracion') || msg.includes('duración') || msg.includes('cuanto dura') ||
+      msg.includes('cuánto dura') || msg.includes('tiempo') || msg.includes('horario')) {
+    return respuestas.duracion;
+  }
+  
+  // Costo
+  if (msg.includes('costo') || msg.includes('precio') || msg.includes('gratis') ||
+      msg.includes('pagar') || msg.includes('cuanto cuesta') || msg.includes('cuánto cuesta')) {
+    return respuestas.costo;
+  }
+  
+  // Requisitos
+  if (msg.includes('requisito') || msg.includes('necesito') || msg.includes('quien puede') ||
+      msg.includes('quién puede') || msg.includes('participar')) {
+    return respuestas.requisitos;
+  }
+  
+  // Demo Lab
+  if (msg.includes('demo lab') || msg.includes('demolab') || msg.includes('quien desarrollo') ||
+      msg.includes('quién desarrolló')) {
+    return respuestas.demolab;
+  }
+  
+  // Diferencias
+  if (msg.includes('diferencia') || msg.includes('unico') || msg.includes('único') ||
+      msg.includes('por que') || msg.includes('por qué')) {
+    return respuestas.diferencias;
+  }
+  
+  // Contacto
+  if (msg.includes('contacto') || msg.includes('email') || msg.includes('telefono') ||
+      msg.includes('escribir')) {
     return respuestas.contacto;
   }
   
-  if (msg.includes('ayuda') || msg.includes('help')) {
+  // Ayuda por defecto
+  if (msg.includes('ayuda') || msg.includes('help') || msg.includes('hola')) {
     return respuestas.ayuda;
   }
   
+  // Si no reconoce nada, muestra el menú de ayuda
   return respuestas.ayuda;
 }
-
 app.post('/slack/events', async (req, res) => {
   const body = req.body;
   
