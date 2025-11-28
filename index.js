@@ -7,166 +7,180 @@ app.use(express.json());
 // 🔑 IMPORTANTE: Aquí va tu token de Slack
 const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
 
-// 📚 BASE DE CONOCIMIENTOS - Academia de Libertad
 const respuestas = {
-  que_es: `🎓 *¿QUÉ ES LA ACADEMIA DE LIBERTAD?*
+  // INFORMACIÓN GENERAL
+  academia: `🎓 *¿QUÉ ES LA ACADEMIA DE LIBERTAD?*
 
-La Academia de Libertad es una plataforma incentivada de educación en libertad que transforma el conocimiento cívico en acción. 
+La Academia de Libertad es una plataforma de educación en libertad que transforma el conocimiento cívico en acción.
 
-A través de tres pilares principales:
-- Curso de Libertad (certificado por Cornell University)
-- Red de Embajadores de Libertad
-- Programa de Libertad y Comunidad
+📚 *Tres pilares:*
+1️⃣ Curso de Libertad (15 horas, certificado por Cornell University)
+2️⃣ Red de Embajadores de Libertad
+3️⃣ Programa de Libertad y Comunidad
 
-Acompañamos a personas que desean comprender, defender y promover la Libertad y Democracia en sus comunidades.`,
+🌐 Totalmente virtual y asincrónica
+💡 Aprende a tu propio ritmo
 
-  iniciativas: `🌟 *INICIATIVAS DE LA ACADEMIA*
+¿Quieres saber más? Pregúntame sobre el curso, certificación o beneficios.`,
 
-La Academia se basa en tres pilares:
+  curso: `📖 *CURSO DE LIBERTAD*
 
-1️⃣ *Curso de Libertad*
-Experiencia cinematográfica de 15 horas, certificada por Cornell University, que introduce a los Principios de Libertad.
+Un recorrido cinematográfico de 15 horas certificado por Cornell University.
 
-2️⃣ *Red de Embajadores de Libertad*
-Comunidad de graduados con acceso a becas, microgrants, mentorías y oportunidades de liderazgo cívico.
-
-3️⃣ *Programa de Libertad y Comunidad*
-Iniciativas presenciales que llevan la educación cívica a espacios deportivos, culturales y comunitarios.`,
-
-  modalidad: `💻 *MODALIDAD DEL PROGRAMA*
-
-La Academia de Libertad es *totalmente virtual y asincrónica*.
-
-Puedes avanzar a tu propio ritmo, en el horario que prefieras. No hay clases fijas.
-
-📅 Ocasionalmente hay encuentros virtuales sincrónicos opcionales para profundizar temas y conectar con otros participantes.
-
-⏱️ Duración promedio: 6-8 semanas (dependiendo de tu ritmo)`,
-
-  curso: `🎬 *CURSO DE LIBERTAD*
-
-Es un recorrido cinematográfico de *15 horas*, certificado por Cornell University, que combina:
-- Historias reales de Freedom Advocates
-- Diálogo socrático
-- Pensamiento crítico
-- Aplicación cívica en contextos reales
-
-*Basado en 7 Principios de Libertad:*
+📚 *7 Principios de Libertad:*
 1. Libertad política y participación
-2. Derechos de propiedad y autonomía personal
+2. Derechos de propiedad
 3. Libertad de expresión
-4. Gobierno limitado y separación de poderes
+4. Gobierno limitado
 5. Estado de derecho
-6. Relaciones y asociaciones voluntarias
-7. Gobierno por consentimiento y representación`,
+6. Relaciones voluntarias
+7. Gobierno por consentimiento
 
-  certificado: `📜 *CERTIFICADO EN LIBERTAD Y LIDERAZGO CÍVICO*
+🎬 Basado en historias reales
+💭 Pensamiento crítico
+🎯 Aplicación práctica
 
-Al completar el Curso de Libertad, recibes un certificado formal otorgado y certificado por *Cornell University*.
+Más info: [link de la web]`,
 
-Este certificado valida que:
-✅ Dominas el Freedom Curriculum
-✅ Tienes las bases para continuar tu liderazgo cívico
-✅ Puedes unirte a la Red de Embajadores de Libertad`,
+  certificado: `🏆 *CERTIFICADO EN LIBERTAD Y LIDERAZGO CÍVICO*
 
-  participar: `👥 *¿QUIÉNES PUEDEN PARTICIPAR?*
+✅ Certificado formal por Cornell University
+✅ Validación del Freedom Curriculum
+✅ Base para unirte a la Red de Embajadores
 
-La Academia está diseñada para:
-- Aprendices independientes *mayores de 16 años*
-- Participantes de universidades y centros educativos aliados
-- Freedom Advocates que amplifican mensajes de libertad
-- Personas afiliadas a organizaciones colaboradoras
+📋 Requisito: Completar el Curso de Libertad
 
-*No necesitas experiencia previa* - solo interés en comprender y defender la libertad.`,
-
-  beneficios: `🎁 *BENEFICIOS DE LA RED DE EMBAJADORES*
-
-Al completar el Curso de Libertad, puedes aplicar a:
-- 💰 Becas académicas con socios universitarios
-- 🚀 Microgrants para proyectos cívicos
-- 🤝 Oportunidades de voluntariado
-- 📈 Formación en libertad financiera y emprendimiento
-- 🌍 Participación en eventos globales sobre libertad y democracia`,
-
-  microgrants: `💡 *MICROGRANTS*
-
-Los microgrants apoyan iniciativas que promueven:
-- Participación cívica
-- Innovación y emprendimiento social
-- Inclusión comunitaria
-- Liderazgo juvenil
-
-Son fondos para convertir tu aprendizaje en *acción real* en tu comunidad.`,
-
-  costo: `💵 *¿TIENE COSTO?*
-
-Depende del país, aliado o programa de acceso.
-
-En la mayoría de los casos, gracias a aliados institucionales, la participación es *gratuita o está altamente becada*.
-
-🎓 No hay barreras económicas para participar.`,
-
-  diferencia: `⭐ *¿QUÉ NOS DIFERENCIA?*
-
-- *Es incentivada:* el aprendizaje abre puertas reales a becas y microgrants
-- *Certificada* por Cornell University
-- *Cinematográfica,* basada en historias reales
-- *Práctica,* conectando aprendizaje con acción inmediata
-- *Comunitaria,* forma una red regional comprometida con Libertad y Democracia`,
+Este certificado abre puertas a becas, microgrants y oportunidades de liderazgo cívico.`,
 
   inscripcion: `📝 *¿CÓMO ME INSCRIBO?*
 
-Puedes registrarte a través de:
-- Página web oficial de la Academia de Libertad
-- Aliados universitarios
+*Opciones de registro:*
+- Página web oficial: [link]
+- A través de universidades aliadas
 - Organizaciones colaboradoras
 - Programas comunitarios
 
-Una vez inscrito, recibirás acceso a la plataforma virtual y las instrucciones por correo electrónico.
+📧 Recibirás acceso a la plataforma por email
+🆓 Participación gratuita o becada (según país/aliado)
 
-¿Necesitas el enlace específico? Contáctanos.`,
+*Requisitos:*
+- Mayor de 16 años
+- Conexión a internet
+- Disposición para aprender
 
-  requisitos: `🔧 *REQUISITOS TÉCNICOS*
+¿Listo para empezar? Visita: [link]`,
 
-Solo necesitas:
-- ✅ Conexión a internet
-- ✅ Computadora o dispositivo móvil
-- ✅ Disposición para aprender de forma autónoma
-- ✅ Ser mayor de 16 años
+  beneficios: `🎁 *BENEFICIOS DE LA RED DE EMBAJADORES*
 
-¡Eso es todo!`,
+Al completar el Curso de Libertad, accedes a:
 
-  ayuda: `👋 *¡Hola! Soy el Asistente de la Academia de Libertad*
+💰 Becas académicas con universidades socias
+💵 Microgrants para proyectos cívicos
+🤝 Oportunidades de voluntariado
+📈 Formación en libertad financiera
+🌍 Eventos globales sobre libertad y democracia
+
+*Proyectos que apoyamos:*
+- Participación cívica
+- Emprendimiento social
+- Inclusión comunitaria
+- Liderazgo juvenil`,
+
+  duracion: `⏱️ *DURACIÓN DEL PROGRAMA*
+
+📚 Curso de Libertad: 15 horas de contenido
+⏰ A tu propio ritmo (asincrónico)
+📅 Promedio: 6-8 semanas para completar
+
+*Modalidad:*
+✅ 100% virtual
+✅ Sin horarios fijos
+✅ Fechas límite flexibles para módulos
+
+💡 Ocasionalmente hay encuentros virtuales opcionales para profundizar temas.`,
+
+  costo: `💰 *COSTO DE PARTICIPACIÓN*
+
+🆓 *Gratis o altamente becado*
+
+Depende de:
+- Tu país
+- Aliado institucional
+- Programa de acceso
+
+En la mayoría de los casos, la participación es GRATUITA gracias a nuestros aliados comprometidos con la educación en libertad.
+
+📧 Consulta disponibilidad en tu región al inscribirte.`,
+
+  requisitos: `📋 *REQUISITOS PARA PARTICIPAR*
+
+✅ Edad: Mayor de 16 años
+✅ Conexión a internet estable
+✅ Computadora o dispositivo móvil
+✅ Disposición para aprender de forma autónoma
+
+❌ NO necesitas experiencia previa
+❌ NO necesitas conocimientos especializados
+
+*Perfil ideal:*
+- Aprendices independientes
+- Estudiantes universitarios
+- Freedom Advocates
+- Personas comprometidas con su comunidad`,
+
+  demolab: `🏢 *DEMO LAB*
+
+Demo Lab es la organización que desarrolla:
+- El contenido de la Academia
+- La metodología de aprendizaje
+- La plataforma virtual
+
+📢 Todas las comunicaciones se refieren a la Academia de Libertad.
+
+Más información: [link de Demo Lab]`,
+
+  diferencias: `⭐ *¿QUÉ NOS HACE ÚNICOS?*
+
+✅ Incentivada: Abre puertas a becas y oportunidades reales
+✅ Certificada: Por Cornell University
+✅ Cinematográfica: Basada en historias reales
+✅ Práctica: Conecta aprendizaje con acción inmediata
+✅ Comunitaria: Red regional comprometida con libertad
+
+No es solo teoría, es transformación en acción. 🚀`,
+
+  contacto: `📞 *CONTACTO*
+
+📧 Email: [email de la academia]
+🌐 Web: [link]
+📱 Redes sociales: [enlaces]
+
+*Horario de atención:*
+Lunes a Viernes: [horario]
+
+¿Tienes dudas? Escríbenos y te ayudaremos con tu inscripción.`,
+
+  ayuda: `👋 *¡Hola! Soy el Bot de la Academia de Libertad*
 
 Puedo ayudarte con información sobre:
 
-📚 *Sobre la Academia*
-- ¿Qué es? → pregunta sobre "qué es academia"
-- Iniciativas → pregunta sobre "iniciativas" o "pilares"
-- ¿Qué nos diferencia? → pregunta "diferencia" o "único"
+🎓 Academia - Qué es y cómo funciona
+📚 Curso - Detalles del Curso de Libertad
+🏆 Certificado - Certificación de Cornell
+📝 Inscripción - Cómo registrarte
+🎁 Beneficios - Becas, microgrants y más
+⏱️ Duración - Cuánto tiempo toma
+💰 Costo - Información de precios
+📋 Requisitos - Qué necesitas
 
-🎓 *Curso y Certificado*
-- Curso de Libertad → pregunta "curso"
-- Certificado → pregunta "certificado"
-- Modalidad → pregunta "virtual" o "modalidad"
-
-💰 *Beneficios*
-- Red de Embajadores → pregunta "beneficios" o "embajadores"
-- Microgrants → pregunta "microgrants" o "proyectos"
-- Costo → pregunta "costo" o "gratis"
-
-📝 *Participación*
-- ¿Quiénes pueden? → pregunta "participar" o "requisitos"
-- Inscripción → pregunta "inscribir" o "registro"
-
-*Ejemplos:*
-- @Bot FAQ qué es la academia
-- @Bot FAQ cómo me inscribo
-- @Bot FAQ cuáles son los beneficios
+*Ejemplos de preguntas:*
+- @Bot qué es la academia
+- @Bot cómo me inscribo
+- @Bot qué beneficios tiene
+- @Bot cuánto cuesta
 
 ¡Pregúntame lo que necesites! 🚀`
 };
-
 function buscarRespuesta(mensaje) {
   const msg = mensaje.toLowerCase();
   
