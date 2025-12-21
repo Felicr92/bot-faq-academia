@@ -1,10 +1,9 @@
 const express = require('express');
 const fetch = require('node-fetch');
-const app = express();
 
+const app = express();
 app.use(express.json());
 
-// 🔑 IMPORTANTE: Aquí va tu token de Slack
 const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
 
 const respuestas = {
@@ -40,7 +39,7 @@ Un recorrido cinematográfico de 15 horas certificado por Cornell University.
 💭 Pensamiento crítico
 🎯 Aplicación práctica
 
-Más info: [link de la web]`,
+Más info: https://freedomacademy.mykajabi.com/`,
 
   certificado: `🏆 *CERTIFICADO EN LIBERTAD Y LIDERAZGO CÍVICO*
 
@@ -55,20 +54,20 @@ Este certificado abre puertas a becas, microgrants y oportunidades de liderazgo 
   inscripcion: `📝 *¿CÓMO ME INSCRIBO?*
 
 *Opciones de registro:*
-- Página web oficial: [link]
-- A través de universidades aliadas
-- Organizaciones colaboradoras
-- Programas comunitarios
+• Página web oficial: https://freedomacademy.mykajabi.com/
+• A través de universidades aliadas
+• Organizaciones colaboradoras
+• Programas comunitarios
 
 📧 Recibirás acceso a la plataforma por email
 🆓 Participación gratuita o becada (según país/aliado)
 
 *Requisitos:*
-- Mayor de 16 años
-- Conexión a internet
-- Disposición para aprender
+• Mayor de 16 años
+• Conexión a internet
+• Disposición para aprender
 
-¿Listo para empezar? Visita: [link]`,
+¿Listo para empezar? Visita: https://freedomacademy.mykajabi.com/`,
 
   beneficios: `🎁 *BENEFICIOS DE LA RED DE EMBAJADORES*
 
@@ -81,10 +80,10 @@ Al completar el Curso de Libertad, accedes a:
 🌍 Eventos globales sobre libertad y democracia
 
 *Proyectos que apoyamos:*
-- Participación cívica
-- Emprendimiento social
-- Inclusión comunitaria
-- Liderazgo juvenil`,
+• Participación cívica
+• Emprendimiento social
+• Inclusión comunitaria
+• Liderazgo juvenil`,
 
   duracion: `⏱️ *DURACIÓN DEL PROGRAMA*
 
@@ -104,13 +103,13 @@ Al completar el Curso de Libertad, accedes a:
 🆓 *Gratis o altamente becado*
 
 Depende de:
-- Tu país
-- Aliado institucional
-- Programa de acceso
+• Tu país
+• Aliado institucional
+• Programa de acceso
 
 En la mayoría de los casos, la participación es GRATUITA gracias a nuestros aliados comprometidos con la educación en libertad.
 
-📧 Consulta disponibilidad en tu región al inscribirte.`,
+📧 Consulta disponibilidad en tu región al inscribirte en: https://freedomacademy.mykajabi.com/`,
 
   requisitos: `📋 *REQUISITOS PARA PARTICIPAR*
 
@@ -123,21 +122,22 @@ En la mayoría de los casos, la participación es GRATUITA gracias a nuestros al
 ❌ NO necesitas conocimientos especializados
 
 *Perfil ideal:*
-- Aprendices independientes
-- Estudiantes universitarios
-- Freedom Advocates
-- Personas comprometidas con su comunidad`,
+• Aprendices independientes
+• Estudiantes universitarios
+• Freedom Advocates
+• Personas comprometidas con su comunidad`,
 
   demolab: `🏢 *DEMO LAB*
 
 Demo Lab es la organización que desarrolla:
-- El contenido de la Academia
-- La metodología de aprendizaje
-- La plataforma virtual
+• El contenido de la Academia
+• La metodología de aprendizaje
+• La plataforma virtual
 
 📢 Todas las comunicaciones se refieren a la Academia de Libertad.
 
-Más información: [link de Demo Lab]`,
+📧 Contacto: elena@demolabcr.org
+📱 Instagram: https://www.instagram.com/academiadelibertad/`,
 
   diferencias: `⭐ *¿QUÉ NOS HACE ÚNICOS?*
 
@@ -151,14 +151,12 @@ No es solo teoría, es transformación en acción. 🚀`,
 
   contacto: `📞 *CONTACTO*
 
-📧 Email: [email de la academia]
-🌐 Web: [link]
-📱 Redes sociales: [enlaces]
+📧 Email: elena@demolabcr.org
+🌐 Web: https://freedomacademy.mykajabi.com/
+📱 Instagram: https://www.instagram.com/academiadelibertad/
 
-*Horario de atención:*
-Lunes a Viernes: [horario]
-
-¿Tienes dudas? Escríbenos y te ayudaremos con tu inscripción.`,
+*¿Tienes dudas?* 
+Escríbenos y te ayudaremos con tu inscripción.`,
 
   ayuda: `👋 *¡Hola! Soy el Bot de la Academia de Libertad*
 
@@ -171,16 +169,41 @@ Puedo ayudarte con información sobre:
 🎁 Beneficios - Becas, microgrants y más
 ⏱️ Duración - Cuánto tiempo toma
 💰 Costo - Información de precios
-📋 Requisitos - Qué necesitas
+📋 Requisitos - Quién puede participar
 
 *Ejemplos de preguntas:*
-- @Bot qué es la academia
-- @Bot cómo me inscribo
-- @Bot qué beneficios tiene
-- @Bot cuánto cuesta
+• @Bot qué es la academia
+• @Bot cómo me inscribo
+• @Bot qué beneficios tiene
 
-¡Pregúntame lo que necesites! 🚀`
+¡Pregúntame lo que necesites! 🚀`,
+
+  noentendido: `🤔 *No estoy seguro de qué necesitas*
+
+Puedo ayudarte con información sobre:
+
+📚 *Temas principales:*
+• Academia - Qué es la Academia de Libertad
+• Curso - Detalles del Curso de Libertad  
+• Certificado - Certificación Cornell
+• Inscripción - Cómo registrarte
+• Beneficios - Becas y oportunidades
+• Costo - Información de precios
+• Requisitos - Quién puede participar
+• Duración - Cuánto tiempo toma
+
+*Ejemplo de preguntas:*
+"@Bot qué es la academia"
+"@Bot cómo me inscribo"
+"@Bot cuánto cuesta"
+
+💬 *¿Necesitas ayuda más específica?*
+Contacta a nuestros asesores:
+📧 elena@demolabcr.org
+📱 Instagram: https://www.instagram.com/academiadelibertad/
+🌐 https://freedomacademy.mykajabi.com/`
 };
+
 function buscarRespuesta(mensaje) {
   const msg = mensaje.toLowerCase();
   
@@ -255,55 +278,49 @@ function buscarRespuesta(mensaje) {
     return respuestas.ayuda;
   }
   
-  // Si no reconoce nada, muestra el menú de ayuda
-  return respuestas.ayuda;
+  // Si no reconoce nada, muestra mensaje personalizado con menú y contacto
+  return respuestas.noentendido;
 }
-app.post('/slack/events', async (req, res) => {
-  const body = req.body;
-  
-  if (body.challenge) {
-    console.log('✅ Verificación de Slack exitosa');
-    return res.send(body.challenge);
-  }
-  
-  res.sendStatus(200);
-  
-  const event = body.event;
-  
-  if (event && event.type === 'app_mention' && !event.bot_id) {
-    const mensajeUsuario = event.text;
-    const canal = event.channel;
-    
-    console.log(`📩 Pregunta: ${mensajeUsuario}`);
-    
-    const respuesta = buscarRespuesta(mensajeUsuario);
-    
-    try {
-      await fetch('https://slack.com/api/chat.postMessage', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          channel: canal,
-          text: respuesta
-        })
-      });
-      
-      console.log('✅ Respuesta enviada');
-      
-    } catch (error) {
-      console.error('❌ Error:', error);
-    }
-  }
-});
 
+// Ruta de verificación
 app.get('/', (req, res) => {
   res.send('🤖 Bot FAQ funcionando! ✅');
 });
 
+// Endpoint para eventos de Slack
+app.post('/slack/events', async (req, res) => {
+  const event = req.body;
+
+  // Verificación de URL de Slack
+  if (event.type === 'url_verification') {
+    return res.send({ challenge: event.challenge });
+  }
+
+  // Procesar menciones al bot
+  if (event.event && event.event.type === 'app_mention') {
+    const mensaje = event.event.text;
+    const canal = event.event.channel;
+
+    const respuesta = buscarRespuesta(mensaje);
+
+    // Enviar respuesta a Slack
+    await fetch('https://slack.com/api/chat.postMessage', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        channel: canal,
+        text: respuesta
+      })
+    });
+  }
+
+  res.status(200).send('OK');
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Bot en puerto ${PORT}`);
+  console.log(`Bot funcionando en puerto ${PORT}`);
 });
